@@ -1,0 +1,146 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>My Shop</title>
+ <script src="https://unpkg.com/react@18/umd/react.development.js" defer crossorigin></script>
+ <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" defer crossorigin></script>
+ <script src="https://unpkg.com/@babel/standalone@7.10.3/babel.min.js" defer crossorigin></script>
+ <style>
+    * {
+        font-family: sans-serif;
+    }
+    :is(.h1-header-2){
+        text-align: center;
+        font-size: 2.5rem;
+    }
+    h2.h2-header-2 {
+        text-align: center;
+    }
+    div.card-shop2 {
+        max-width: 17rem;
+        width: 100%;
+        min-height: 22rem;
+        border: 1px solid black;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }
+    .card-shop2 > p {
+        background-color: lightgreen;
+        padding: 0.3125rem;
+    }
+    p.on-sale {
+        background-color: gold;
+        position: absolute;
+        top: -7px;
+        left: -10px;
+        rotate: -45deg;
+    }
+    .card-shop2 img {
+        height: 12.5rem;
+    }
+    section.section-wrapper-1 {
+        padding: 1.25rem;
+        display: flex;
+        flex-direction: column;
+    }
+    div.cards-wrapper-1 {
+        padding: 0.625rem;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1.25rem;
+    }
+    footer {
+        background-color: lightblue;
+        text-align: center;
+        padding: 0.3125rem;
+    }
+ </style>
+</head>
+
+<body>
+ <div id="root"></div>
+
+ <script type="text/babel" data-presets="react,stage-3">
+
+    const products = [
+        {
+            product: "flash t-shirt",
+            price: 27.5,
+            category: "t-shirts",
+            bestSeller: false,
+            image: "https://images-na.ssl-images-amazon.com/images/I/61ZipyCaAKL._AC_UX385_.jpg",
+            onSale: true,
+        },
+        {
+            product: "batman t-shirt",
+            price: 22.5,
+            category: "t-shirts",
+            bestSeller: true,
+            image: "https://s1.thcdn.com/productimg/1600/1600/11676326-1444552242012324.png",
+            onSale: false,
+        },
+        {
+            product: "superman hat",
+            price: 13.9,
+            category: "hats",
+            bestSeller: true,
+            image: "https://banner2.kisspng.com/20180429/rqe/kisspng-baseball-cap-superman-logo-batman-hat-5ae5ef317f8366.9727520615250184175223.jpg",
+            onSale: true,
+        },
+    ];
+
+    const Shop2 = () => {
+        return (
+            <div>
+                <header>
+                    <h1 className='h1-header-2'>My Shop</h1>
+                </header>
+                <section className='section-wrapper-1'>
+                    <h2 className='h2-header-2'>Our Products</h2>
+                    <div class="cards-wrapper-1">   
+                    {products.map((product, index) => (
+                        <div className='card-shop2' key={index}>
+                            <img src={product.image} alt={product.product} />
+                            <h3>{product.product}</h3>
+                            <p>Price: {product.price}</p>
+                            {product.onSale && <p className='on-sale'>On Sale</p>}
+                        </div>
+                    ))}
+                </div>
+                </section>
+                <section className='section-wrapper-1'>
+                    <h2 className='h2-header-2'>Best Sellers</h2>
+                    <div class="cards-wrapper-1">  
+                    {products.filter(product => product.bestSeller).map((product, index) => (
+                        <div className='card-shop2' key={index}>
+                            <img src={product.image} alt={product.product} />
+                            <h3>{product.product}</h3>
+                            <p>Price: {product.price}</p>
+                            {product.onSale && <p className='on-sale'>On Sale</p>}
+                        </div>
+                    ))}
+                    </div>
+                </section>
+                <footer>
+                    <p>All rights reserved</p>
+                    <p>© 2025 My Shop Inc.</p>
+                </footer>
+            </div>
+        );
+    };
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<Shop2 />);
+ </script>
+</body>
+</html>
