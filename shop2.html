@@ -107,7 +107,7 @@
                 </header>
                 <section className='section-wrapper-1'>
                     <h2 className='h2-header-2'>Our Products</h2>
-                    <div class="cards-wrapper-1">   
+                    <div className="cards-wrapper-1">   
                     {products.map((product, index) => (
                         <div className='card-shop2' key={index}>
                             <img src={product.image} alt={product.product} />
@@ -120,7 +120,7 @@
                 </section>
                 <section className='section-wrapper-1'>
                     <h2 className='h2-header-2'>Best Sellers</h2>
-                    <div class="cards-wrapper-1">  
+                    <div className="cards-wrapper-1">  
                     {products.filter(product => product.bestSeller).map((product, index) => (
                         <div className='card-shop2' key={index}>
                             <img src={product.image} alt={product.product} />
